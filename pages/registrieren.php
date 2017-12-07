@@ -1,7 +1,24 @@
+//session_start();
+//$pdo = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+
+
 <?php
-session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+$servername = "webdb1.ipax.at";
+$username = "k003196_30";
+$password = "xGWUvM5N3Bz3";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=k003196_30_logdrive", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+}
+catch(PDOException $e)
+{
+    echo "Connection failed: " . $e->getMessage();
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="de">
@@ -111,4 +128,3 @@ if($showFormular) {
 ?>
 
 </body>
-</html>
