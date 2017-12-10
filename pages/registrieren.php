@@ -1,9 +1,10 @@
-//session_start();
-//$pdo = new PDO('mysql:host=localhost;dbname=test', 'root', '');
-
-
 <?php
-$servername = "webdb1.ipax.at";
+session_start();
+$pdo = new PDO('mysql:host=webdb1.ipax.at;dbname=k003196_30_logdrive', 'k003196_30', 'xGWUvM5N3Bz3');
+
+?>
+
+/*$servername = "webdb1.ipax.at";
 $username = "k003196_30";
 $password = "xGWUvM5N3Bz3";
 
@@ -19,7 +20,7 @@ catch(PDOException $e)
 }
 ?>
 
-
+*/
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -95,7 +96,7 @@ if(isset($_GET['register'])) {
     if(!$error) {
         $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
-        $statement = $pdo->prepare("INSERT INTO users (email, passwort) VALUES (:email, :passwort)");
+        $statement = $pdo->prepare("INSERT INTO user (email, passwort) VALUES (:email, :passwort)");
         $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash));
 
         if($result) {
