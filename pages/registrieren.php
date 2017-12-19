@@ -69,8 +69,8 @@ if(isset($_GET['register'])) {
 
     //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
     if(!$error) {
-        $statement = $pdo->prepare("SELECT * FROM user WHERE email = :email");
-        $result = $statement->execute(array('email' => $email));
+        $statement = $pdo->prepare("SELECT * FROM user WHERE E-Mail-Address = :E-Mail-Addresse");
+        $result = $statement->execute(array('E-Mail-Address' => $email));
         $user = $statement->fetch();
 
         if($user !== false) {
@@ -83,11 +83,11 @@ if(isset($_GET['register'])) {
     if(!$error) {
         $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
-        $statement = $pdo->prepare("INSERT INTO user (email, Password) VALUES (:email, :Password)");
-        $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash));
+        $statement = $pdo->prepare("INSERT INTO user (E-Mail-Address, Password) VALUES (:E-Mail-Address, :Password)");
+        $result = $statement->execute(array('E-Mail-Address' => $email, 'Password' => $passwort_hash));
 
         if($result) {
-            echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
+            echo 'Du wurdest erfolgreich registriert. <a href="index.html">Zum Login</a>';
             $showFormular = false;
         } else {
             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
