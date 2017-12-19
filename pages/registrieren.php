@@ -1,26 +1,13 @@
 <?php
 session_start();
-$pdo = new PDO('mysql:host=webdb1.ipax.at;dbname=k003196_30_logdrive', 'k003196_30', 'xGWUvM5N3Bz3');
+$con=mysqli_connect("webdb1.ipax.at","k003196_30","xGWUvM5N3Bz3","k003196_30_logdrive");
+
+   if (mysqli_connect_errno($con)) {
+      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
 
 ?>
 
-/*$servername = "webdb1.ipax.at";
-$username = "k003196_30";
-$password = "xGWUvM5N3Bz3";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=k003196_30_logdrive", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully";
-}
-catch(PDOException $e)
-{
-    echo "Connection failed: " . $e->getMessage();
-}
-?>
-
-*/
 <!DOCTYPE html>
 <html lang="de">
 <head>
