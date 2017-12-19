@@ -3,6 +3,31 @@
 
 <head>
 
+    <?php
+session_start();
+$con=mysqli_connect("webdb1.ipax.at","k003196_30","xGWUvM5N3Bz3","k003196_30_logdrive");
+
+   if (mysqli_connect_errno($con)) {
+      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+   }
+
+   $username = $_GET['username'];
+   $password = $_GET['password'];
+   $sh1password = sha1($password);
+   $result = mysqli_query($con,"SELECT * FROM user where 
+   Username='$username' and Password='$sh1password'");
+   $row = mysqli_fetch_array($result);
+   $data = $row[0];
+
+   if($data){
+      echo $data;
+          echo "Access granted";
+   }
+
+   mysqli_close($con);
+}
+?>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,7 +80,7 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>
+                                <a href="dashboard.html" class="btn btn-lg btn-success btn-block">Login</a>
                             </fieldset>
                         </form>
                     </div>
@@ -77,5 +102,4 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
 </body>
-
 </html>
