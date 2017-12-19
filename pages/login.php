@@ -6,7 +6,7 @@ if(isset($_GET['login'])) {
     $email = $_POST['email'];
     $passwort = $_POST['passwort'];
 
-    $statement = $pdo->prepare("SELECT * FROM user WHERE email = :email");
+    $statement = $pdo->prepare("SELECT * FROM user WHERE E-Mail-Address = :email");
     $result = $statement->execute(array('email' => $email));
     $user = $statement->fetch();
 
