@@ -432,3 +432,10 @@ table.dataTable thead .sorting:after {
     border-left-width: 0;
   }
 }
+.carimg{
+  width: 100%;
+}
+.caritems{
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
