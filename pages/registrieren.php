@@ -69,7 +69,7 @@ if(isset($_GET['register'])) {
 
     //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
     if(!$error) {
-        $statement = $pdo->prepare("SELECT * FROM user WHERE E-Mail-Address = :E-Mail-Addresse");
+        $statement = $con->prepare("SELECT * FROM user WHERE E-Mail-Address = :E-Mail-Addresse");
         $result = $statement->execute(array('E-Mail-Address' => $email));
         $user = $statement->fetch();
 
@@ -83,7 +83,7 @@ if(isset($_GET['register'])) {
     if(!$error) {
         $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
-        $statement = $pdo->prepare("INSERT INTO user (E-Mail-Address, Password) VALUES (:E-Mail-Address, :Password)");
+        $statement = $con->prepare("INSERT INTO user (E-Mail-Address, Password) VALUES (:E-Mail-Address, :Password)");
         $result = $statement->execute(array('E-Mail-Address' => $email, 'Password' => $passwort_hash));
 
         if($result) {
