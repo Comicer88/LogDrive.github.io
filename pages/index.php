@@ -15,7 +15,7 @@ $con = mysqli_connect("webdb1.ipax.at","k003196_30","xGWUvM5N3Bz3","k003196_30_l
    $password = $_GET['password'];
    $sh1password = sha1($password);
    $result = mysqli_query($con,"SELECT * FROM user where
-   Username='$username' and Password='$sh1password'");
+   username='$username' and Password='$sh1password'");
    $row = mysqli_fetch_array($result);
    $data = $row[0];
 
@@ -25,7 +25,7 @@ $con = mysqli_connect("webdb1.ipax.at","k003196_30","xGWUvM5N3Bz3","k003196_30_l
    }
 
    mysqli_close($con);
-}
+
 ?>
 
     <meta charset="utf-8">
