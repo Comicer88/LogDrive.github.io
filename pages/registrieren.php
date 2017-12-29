@@ -5,7 +5,6 @@ $con=mysqli_connect("webdb1.ipax.at","k003196_30","xGWUvM5N3Bz3","k003196_30_log
    if (mysqli_connect_errno($con)) {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -29,18 +28,13 @@ $con=mysqli_connect("webdb1.ipax.at","k003196_30","xGWUvM5N3Bz3","k003196_30_log
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
 
 </head>
 <body>
@@ -69,7 +63,7 @@ if(isset($_GET['register'])) {
 
     //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
     if(!$error) {
-        $statement = $con->prepare("SELECT * FROM user WHERE E-Mail-Address = :E-Mail-Addresse");
+        $statement = $con->prepare("SELECT * FROM user WHERE E-Mail-Address = :email");
         $result = $statement->execute(array('E-Mail-Address' => $email));
         $user = $statement->fetch();
 
@@ -98,7 +92,7 @@ if(isset($_GET['register'])) {
 if($showFormular) {
     ?>
 
-    <form action="?register=1" method="post">
+    <form  action="registrieren.php" method="post">
         E-Mail:<br>
         <input type="email" size="40" maxlength="250" name="email"><br><br>
 
@@ -115,4 +109,15 @@ if($showFormular) {
 } //Ende von if($showFormular)
 ?>
 
+<!-- jQuery -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../dist/js/sb-admin-2.js"></script>
 </body>

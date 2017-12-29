@@ -53,16 +53,16 @@ $(document).ready(function() {
 $(function() {
 
     var data = [{
-        label: "Series 0",
+        label: "Strafen",
         data: 1
     }, {
-        label: "Series 1",
+        label: "Werkstatt",
         data: 3
     }, {
-        label: "Series 2",
+        label: "Versicherungen",
         data: 9
     }, {
-        label: "Series 3",
+        label: "Tank",
         data: 20
     }];
 
