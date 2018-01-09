@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="de">
+<?php
+    session_start();
+    $pdo = new PDO('mysql:host=phpmyadmin.ipax.at;dbname=k003196_30_logdrive', 'k003196_30', 'xGWUvM5N3Bz3');
 
-<head>
+    if(isset($_GET['login'])) {
+        $email = $_POST['email'];
+        $passwort = $_POST['passwort'];
 
-    <?php
-session_start();
-$con = mysqli_connect("webdb1.ipax.at","k003196_30","xGWUvM5N3Bz3","k003196_30_logdrive");
+        $statement = $pdo->prepare("SELECT * FROM user WHERE E-Mail-Address = :email");
+$result = $statement->execute(array('email' => $email));
+$user = $statement->fetch();
 
-   if (mysqli_connect_errno($con)) {
-      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-   }
+//Überprüfung des Passworts
+if ($user !== false && password_verify($passwort, $user['passwort'])) {
+$_SESSION['userid'] = $user['id'];
+die('Login erfolgreich. Weiter zu <a href="dashboard.html">interner Bereich</a>');
+} else {
+$errorMessage = "E-Mail oder Passwort war ungültig<br>";
+}
 
-   $username = $_GET['username'];
-   $password = $_GET['password'];
-   $sh1password = sha1($password);
-   $result = mysqli_query($con,"SELECT * FROM user where
-   username='$username' and Password='$sh1password'");
-   $row = mysqli_fetch_array($result);
-   $data = $row[0];
-
-   if($data){
-      echo $data;
-          echo "Access granted";
-   }
-
-   mysqli_close($con);
+}
 
 ?>
+<head>
+
+
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,12 +43,9 @@ $con = mysqli_connect("webdb1.ipax.at","k003196_30","xGWUvM5N3Bz3","k003196_30_l
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
 
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -64,6 +60,7 @@ $con = mysqli_connect("webdb1.ipax.at","k003196_30","xGWUvM5N3Bz3","k003196_30_l
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
+
                     <div class="panel-heading">
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
