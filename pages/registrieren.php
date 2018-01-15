@@ -5,6 +5,8 @@ $con=mysqli_connect("webdb1.ipax.at","k003196_30","xGWUvM5N3Bz3","k003196_30_log
    if (mysqli_connect_errno($con)) {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
+//session_start();
+//$pdo = new PDO("webdb1.ipax.at","k003196_30","xGWUvM5N3Bz3","k003196_30_logdrive");
 ?>
 
 <!DOCTYPE html>
