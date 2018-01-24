@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 session_start();
 $pdo = new PDO('mysql:host=webdb1.ipax.at;dbname=k003196_30_logdrive', 'k003196_30', 'xGWUvM5N3Bz3');
@@ -112,3 +113,41 @@ if(isset($errorMessage)) {
 </body>
 </html>
 
+=======
+<?php include('server.php') ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration system PHP and MySQL</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<div class="header">
+		<h2>Login</h2>
+	</div>
+	
+	<form method="post" action="login.php">
+
+		<?php include('errors.php'); ?>
+
+		<div class="input-group">
+			<label>Username</label>
+			<input type="text" name="username" >
+		</div>
+		<div class="input-group">
+			<label>Password</label>
+			<input type="password" name="password">
+		</div>
+		<div class="input-group">
+			<button type="submit" class="btn" name="login_user">Login</button>
+		</div>
+		<p>
+			Not yet a member? <a href="register.php">Sign up</a>
+		</p>
+	</form>
+
+
+</body>
+</html>
+>>>>>>> f026315fef37ffbdfc5c7585ccd408ecc778e92a
