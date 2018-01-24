@@ -1,10 +1,8 @@
 <?php
-session_start();
-session_destroy();
+    session_start();
+    session_destroy();
 
-//Cookies entfernen
-setcookie("identifier","",time()-(3600*24*365));
-setcookie("securitytoken","",time()-(3600*24*365));
 
-echo "Logout erfolgreich";
+    header("Location: login.php");
+    echo "Du wirst weitergeleitet";
 ?>
