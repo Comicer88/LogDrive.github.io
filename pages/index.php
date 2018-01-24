@@ -2,7 +2,7 @@
 <html lang="de">
 <?php
     session_start();
-    $pdo = new PDO('mysql:host=phpmyadmin.ipax.at;dbname=k003196_30_logdrive', 'k003196_30', 'xGWUvM5N3Bz3');
+    $pdo = new PDO('webdb1.ipax.at','dbname=k003196_30_logdrive', 'k003196_30', 'xGWUvM5N3Bz3');
 
     if(isset($_GET['login'])) {
         $email = $_POST['email'];
